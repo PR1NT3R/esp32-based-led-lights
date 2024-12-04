@@ -1,5 +1,8 @@
 # A simple project to automate annoying stuff
 ###### At least the ones that are about battery powered led strips
+## Why?
+I made this project, because I was annoyed at having to change coin batteries in a cheap led strip I had, EVERY FEW HOURS (unless I wanted them to be dim),
+So I grabbed some electronics and started experimenting, some time after I came up with this, don't ask me how, even I don't know.
 ## Requirements to flash to esp32:
 Make sure you install this library and board:                                                                                                                                        
 <img src="https://raw.githubusercontent.com/PR1NT3R/esp32-based-led-lights/refs/heads/main/docs/libraries%20and%20boards.png" height="" width="" alt="libraries and boards"></img>                                                                                 
