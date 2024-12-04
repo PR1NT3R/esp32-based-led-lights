@@ -34,7 +34,7 @@ void reconnect() {
     } else {
       Serial.print("failed, rc=");
       Serial.print(client.state());
-      Serial.println("Please try again in 5 seconds");
+      Serial.println("Trying again in 5 seconds");
       delay(5000);
     }
   }

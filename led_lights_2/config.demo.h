@@ -62,3 +62,37 @@ mqtt:
         sw_version: "1.0"
         via_device: "mqtt"
 */
+
+/*
+HOME ASSISTANT LIGHT CARD CONFIGURATION (I use "Big Slider Card" from the HACS store, config below)
+
+type: custom:big-slider-card
+entity: light.led_strip
+name: Led Strip
+attribute: brightness
+transition: 0.3
+height: 80
+background_color: "#1c1c1c"
+text_color: "#ff"
+border_color: "#1c1c1c"
+border_radius: 10px
+border_width: 5px
+icon_color: "#2c4244"
+colorize: true
+icon: mdi:lamp
+show_percentage: true
+bold_text: true
+min: 1
+max: 100
+hold_time: 600
+settle_time: 3000
+tap_action:
+  action: call-service
+  service: light.toggle
+  data:
+    entity_id: light.led_strip
+hold_action:
+  action: more-info
+  data:
+    entity_id: light.led_strip
+*/
