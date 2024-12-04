@@ -2,7 +2,7 @@
 #include <PubSubClient.h>
 #include <ArduinoOTA.h>
 #include <ESPmDNS.h>
-#include "config.h"
+#include <config.h>
 #include <esp_wifi.h>
 
 // MQTT Client
@@ -20,7 +20,7 @@ void setup_wifi() {
     delay(500);
     Serial.print(".");
   }
-  Serial.println(" Connected to WiFi!");
+  Serial.println("Connected to WiFi!");
   Serial.print("Local IP Address: ");
   Serial.println(WiFi.localIP());
 }
@@ -34,7 +34,7 @@ void reconnect() {
     } else {
       Serial.print("failed, rc=");
       Serial.print(client.state());
-      Serial.println(" try again in 5 seconds");
+      Serial.println("Try again in 5 seconds");
       delay(5000);
     }
   }
