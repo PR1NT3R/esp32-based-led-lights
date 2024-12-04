@@ -1,8 +1,9 @@
-<head>
-</head>
-  <h1>ESP32 Based Led Lights</h1>
-<head>
-<body>
-  <img src="" width="" height="" alt=""></img>
-  <p>A simple code for most wireless esp32 based devices to turn any "dumb" led strip running off batteries into a smart device that also supports Home Assistant!</p>
-</body>
+# A simple project to automate annoying stuff
+###### At least the ones that are about battery powered led strips
+.
+.
+## Requirements to flash to esp32:
+Make sure you install this library and board:
+![IMAGE](https://github.com/PR1NT3R/esp32-based-led-lights/blob/main/docs/libraries%20and%20boards.png?raw=true)
+(you don't need the older board version)
+.
