@@ -24,6 +24,11 @@ const char* mqtt_password = "1234";        // MQTT Password
 const char* brightness_command_topic = "room/led_strip_brightness";
 const char* state_announce_topic = "room/led_strip_state_announce";
 const char* led_state_topic = "room/led_strip_state";
+const char* reboot_topic = "room/led_strip_reboot";
+
+// HA Self Healing (to prevent any random issues and all, just make an automation to reboot), disabling this stops listening to the remote reboot topic
+#define SELF_HEALING_REBOOT
+const int self_healing_default_timer = 1000; // in milliseconds
 
 // Define PWM properties
 const int pwmPin = 13; // GPIO pin for PWM (can be changed as needed)

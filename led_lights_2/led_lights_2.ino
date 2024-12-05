@@ -2,7 +2,7 @@
 #include <PubSubClient.h>
 #include <ArduinoOTA.h>
 #include <ESPmDNS.h>
-#include <config.h>
+#include "config.h"
 #include <esp_wifi.h>
 
 // MQTT Client
@@ -31,6 +31,9 @@ void reconnect() {
     if (client.connect("ESP32_Brightness", mqtt_user, mqtt_password)) {
       Serial.println("connected");
       client.subscribe(brightness_command_topic);
+      #if defined(SELF_HEALING_REBOOT)
+        client.subscribe(reboot_topic);
+      #endif
     } else {
       Serial.print("failed, rc=");
       Serial.print(client.state());
@@ -46,6 +49,13 @@ void publishLightState() {
   } else {
     client.publish(state_announce_topic, "OFF", true);
   }
+}
+
+bool isValidNumber(String str){
+  for(byte i=0;i<str.length();i++) {
+    if(isDigit(str.charAt(i))) return true;
+  }
+  return false;
 }
 
 void callback(char* topic, byte* payload, unsigned int length) {
@@ -80,6 +90,17 @@ void callback(char* topic, byte* payload, unsigned int length) {
       }
     }
   }
+  #if defined(SELF_HEALING_REBOOT)
+    else if (String(topic) == reboot_topic) {
+      if (message == "") {
+        delay(self_healing_default_timer);
+        ESP.restart();
+      }else if (isValidNumber(message)) {
+        delay(message.toInt());
+        ESP.restart();
+      }
+    }
+  #endif
 }
 
 void setup() {
