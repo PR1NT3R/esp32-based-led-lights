@@ -25,3 +25,9 @@ For the light card... it's in the same place as the HA config
 ## Contributing:
  * if you have an issue with the code or find a bug, please explain it clearly so that we all can understand it
  * in case of any feature ideas, just pop in a new discussion
+## Plans for the future:
+ * Static MAC adress functionality (for reserving the adress in your router) - V1.1
+ * Proper device discovery - V1.2
+ * Simple/Advanced setup via bluetooth (and a simple webpage to eaisly configure the device for people that aren't technical) - V2
+ * Fully remote debbuding - V1.1 or V1.3
+ * Simpler controll without the need for MQTT (exposing HTTP endpoints, mostly for very niche situations where you want to controll the device from your own local web server or something) - V2
