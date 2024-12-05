@@ -10,7 +10,7 @@ Make sure you install this library and board:
 ## Stuff to change before flashing:
 rename "config.demo.h" to "config.h", and change the values within based on your needs
 ## Wiring, slightly annoying but a neccesity:
-In my case, my led's take in 5V but the esp32 outputs 3.3V, so I'll use an "IRLZ44N N-MOSFET"
+In my case, the led's take in 5V but the esp32 outputs 3.3V, so I'll use an "IRLZ44N N-MOSFET"
 <img src="https://raw.githubusercontent.com/PR1NT3R/esp32-based-led-lights/refs/heads/main/docs/mosfet-irlz44n-technical.jpg" height="" width="" alt="libraries and boards"></img>
 
 based on the diagram provided above, we need to wire it up like this:
