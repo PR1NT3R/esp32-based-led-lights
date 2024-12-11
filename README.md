@@ -29,7 +29,8 @@ For the light card... it's in the same place as the HA config
  * in case of any feature ideas, just pop in a new discussion
 ## Plans for the future:
  * Static MAC adress functionality (for reserving the adress in your router) - V1.1
- * Proper device discovery - V1.2
+ * Custom "MESH" System (I have some ideas, basically plug and play sensors into any node, as I plan many other devices using simmiliar code but for different stuff, and they'd share bluetooth/wifi and sensor data)
+ * Proper device discovery in Home Assistant - V1.2
  * Simple/Advanced setup via bluetooth (and a simple webpage to eaisly configure the device for people that aren't technical) - V2
  * Fully remote debbuding - V1.1 or V1.3
  * Simpler controll without the need for MQTT (exposing HTTP endpoints, mostly for very niche situations where you want to controll the device from your own local web server or something) - V2
