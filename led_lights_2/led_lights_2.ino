@@ -5,6 +5,17 @@
 #include "config.h"
 #include <esp_wifi.h>
 
+#if defined(DHT22_CONNECTED)
+  #include <DHT.h>
+  #define DHTTYPE DHT22
+  DHT dht(DHT22_PIN, DHTTYPE);
+
+  float humidity;
+  float temp;
+
+  unsigned long lastDHT22Update = 0;
+#endif
+
 // MQTT Client
 WiFiClient espClient;
 PubSubClient client(espClient);
@@ -178,6 +189,18 @@ void setup() {
     Serial.println("Error setting up MDNS responder!");
   }
   Serial.println("mDNS responder started");
+
+  #if defined(DHT22_CONNECTED)
+    Serial.println("Starting DHT22 Sensor! A test sensor reading should appear below");
+    dht.begin();
+    humidity = dht.readHumidity();
+    temp = dht.readTemperature();
+    Serial.print("Humidity: ");
+    Serial.print(humidity);
+    Serial.print(" %, Temp: ");
+    Serial.print(temp);
+    Serial.println(" Celsius");
+  #endif
 }
 
 void loop() {
@@ -189,4 +212,31 @@ void loop() {
   }
   client.loop();
   delay(100);
+
+  #if defined(DHT22_CONNECTED)
+    unsigned long currentMillis = millis();
+    if (currentMillis - lastDHT22Update >= DHT22_UPDATE_RATE) {
+      lastDHT22Update = currentMillis;
+
+      #if defined(DHT22_TEMP)
+        float temp = dht.readTemperature();
+        
+        if (isnan(temp)) {
+          Serial.println("Failed to read temp from DHT22 sensor!");
+          return;
+        }
+        client.publish(dht22_temp_topic, String(temp).c_str(), true);
+      #endif
+
+      #if defined(DHT22_HUMIDITY)
+        float humidity = dht.readHumidity();
+
+        if (isnan(humidity)) {
+          Serial.println("Failed to read humidity from DHT22 sensor!");
+          return;
+        }
+        client.publish(dht22_humidity_topic, String(humidity).c_str(), true);
+      #endif
+    }
+  #endif
 }
