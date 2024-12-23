@@ -40,22 +40,13 @@ const int pwmResolution = 8; // 8-bit resolution (0-255)
 // DHT22 sensor shenanigans happen here
 //#define DHT22_CONNECTED // if commented out, the 2 other ones below will be off as well
 
+// DHT22 sensor shenanigans happen here
 #define DHT22_TEMP // uncomment if you want temp readings (off by default since the main define is commented out)
 #define DHT22_HUMIDITY // uncomment if you want humidity readings (off by default since the main define is commented out)
 #define DHT22_PIN 14 // (off by default since the main define is commented out)
 #define DHT22_UPDATE_RATE 5000 // in milliseconds
-const char* dht22_humidity_topic = "room/dht22_humidity";
-const char* dht22_temp_topic = "room/dht22_temperature";
-
-#define USE_DHT22 // Uncomment to use the DHT22 sensor
-#define USE_ENS160_AHT20 // Uncomment to use ENS160 + AHT20 sensor
-
-const char* ens160_temp_topic = "room/ens160_temperature";
-const char* ens160_humidity_topic = "room/ens160_humidity";
-const char* ens160_aqi_topic = "room/ens160_aqi";
-const char* ens160_tvoc_topic = "room/ens160_tvoc";
-const char* ens160_eco2_topic = "room/ens160_eco2";
-
+const char* dht22_humidity_topic = "my_room/dht22_humidity";
+const char* dht22_temp_topic = "my_room/dht22_temperature";
 
 /*
 HOME ASSISTANT CONFIGURATION (I have not yet figured out the device discovery thing)
@@ -86,48 +77,8 @@ mqtt:
         model: ""
         sw_version: "1.0"
         via_device: "mqtt"
-        
-  # \/ OPTIONAL (Paste in parts with "ENS160" if you use that sensor, and paste in parts "DHT22" if you use that sensor) \/
 
-      - unique_id: "ens160_temperature"
-      name: "ENS160 Temperature"
-      state_topic: "room/ens160_temperature"
-      unit_of_measurement: "°C"
-      device_class: "temperature"
-
-    - unique_id: "ens160_humidity"
-      name: "ENS160 Humidity"
-      state_topic: "room/ens160_humidity"
-      unit_of_measurement: "%"
-      device_class: "humidity"
-
-    - unique_id: "ens160_aqi"
-      name: "ENS160 Air Quality Index"
-      state_topic: "room/ens160_aqi"
-
-    - unique_id: "ens160_tvoc"
-      name: "ENS160 TVOC"
-      state_topic: "room/ens160_tvoc"
-      unit_of_measurement: "ppb"
-
-    - unique_id: "ens160_eco2"
-      name: "ENS160 eCO2"
-      state_topic: "room/ens160_eco2"
-      unit_of_measurement: "ppm"
-
-    - unique_id: "dht22_temperature"
-      name: "DHT22 Temperature"
-      state_topic: "room/dht22_temperature"
-      unit_of_measurement: "°C"
-      device_class: "temperature"
-
-    - unique_id: "dht22_humidity"
-      name: "DHT22 Humidity"
-      state_topic: "room/dht22_humidity"
-      unit_of_measurement: "%"
-      device_class: "humidity"
-
-  # \/ DEPRECATED, KEEPING THIS JUST IN CASE BUT IT'S NOT USED \/
+  # \/ OPTIONAL (Paste theese in for DHT22 functionality, you can only paste either temperature or humidity blocks and it will still work) \/
   sensor:
     - unique_id: "dht22_temperature"
       name: "DHT22 Temperature"
@@ -182,43 +133,6 @@ mqtt:
         model: ""
         sw_version: "1.0"
         via_device: "mqtt"
-*/
-
-
-
-/*
-
-  Explanation of the readings:
-
-    Air Quality Index (AQI):
-        AQI is a measure of air quality based on pollution levels. It provides a simplified scale:
-            1 (Excellent): Clean air with minimal pollutants.
-            2-3 (Good): Minor pollutants but still healthy air.
-            4-5 (Moderate to Poor): Polluted air that could affect sensitive groups.
-            6+ (Unhealthy): Very polluted air; may harm everyone's health.
-
-    Total Volatile Organic Compounds (TVOC):
-        TVOC measures the concentration of volatile organic compounds in the air.
-            VOCs are gases emitted by household products, paints, cleaning agents, etc.
-            Levels are measured in ppb (parts per billion):
-                <200 ppb: Low and safe.
-                200-600 ppb: Moderate; prolonged exposure may cause irritation.
-                >600 ppb: High; can lead to health problems.
-
-    Equivalent Carbon Dioxide (eCO₂): 
-        eCO₂ is an estimate of CO₂ levels based on VOCs, expressed in ppm (parts per million):
-            400-600 ppm: Normal indoor levels.
-            600-1000 ppm: Moderate; may cause fatigue and drowsiness.
-            >1000 ppm: Poor air circulation; potential health effects.
-            
-    Temperature:°C/°F
-        The temperature
-
-    Humidity:
-        Relative Humidity (rH) indicates the amount of moisture in the air as a percentage:
-            30-50%: Ideal for most indoor environments.
-            50-70%: Acceptable but may feel humid.
-            >70%: High; can promote mold growth and discomfort.
 */
 
 
