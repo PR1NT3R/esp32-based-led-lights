@@ -38,4 +38,6 @@ For the light card... it's in the same place as the HA config
 ## Issues I plan to fix asap:
  * Overloading the esp32 with MQTT data causes it to freeze for unknown durations of time, making it impossible to even send a remote reboot command to kill the command queqe. (encountered this when making low delay smooth brightness down/up controll loop in HA, possibly gonna add a built in function to only send a single command to achieve the same).
 
+## Licensing stuff
+
 **License Update**: This project was originally licensed under the Unlicense until [02.01.2025 (DD.MM.YYYY)]. As of [02.01.2025 (DD.MM.YYYY)], it is licensed under [Apache 2.0]. Earlier versions remain under the Unlicense.
