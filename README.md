@@ -36,4 +36,4 @@ For the light card... it's in the same place as the HA config
  * Simpler controll without the need for MQTT (exposing HTTP endpoints, mostly for very niche situations where you want to controll the device from your own local web server or something) - V2
 
 ## Issues I plan to fix asap:
- * Overloading the esp32 with MQTT data causes it to freeze for unknown durations of time, making it impossible to even remotely reboot to kill the queqe
+ * Overloading the esp32 with MQTT data causes it to freeze for unknown durations of time, making it impossible to even send a remote reboot command to kill the command queqe. (encountered this when making low delay smooth brightness down/up controll loop in HA, possibly gonna add a built in function to only send a single command to achieve the same).
