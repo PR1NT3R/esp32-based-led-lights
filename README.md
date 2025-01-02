@@ -27,6 +27,7 @@ For the light card... it's in the same place as the HA config
 ## Contributing:
  * if you have an issue with the code or find a bug, please explain it clearly so that we all can understand it
  * in case of any feature ideas, just pop in a new discussion
+ * The repo is open for PR's, so feel free to contribute!
 ## Plans for the future:
  * Static MAC adress functionality (for reserving the adress in your router) - V1.1
  * Custom "MESH" System (I have some ideas, basically plug and play sensors into any node, as I plan many other devices using simmiliar code but for different stuff, and they'd share bluetooth/wifi and sensor data)
