@@ -45,8 +45,8 @@ const int pwmResolution = 8; // 8-bit resolution (0-255)
 #define DHT22_HUMIDITY // uncomment if you want humidity readings (off by default since the main define is commented out)
 #define DHT22_PIN 14 // (off by default since the main define is commented out)
 #define DHT22_UPDATE_RATE 5000 // in milliseconds
-const char* dht22_humidity_topic = "my_room/dht22_humidity";
-const char* dht22_temp_topic = "my_room/dht22_temperature";
+const char* dht22_humidity_topic = "room/humidity";
+const char* dht22_temp_topic = "room/temperature";
 
 /*
 HOME ASSISTANT CONFIGURATION (I have not yet figured out the device discovery thing)
