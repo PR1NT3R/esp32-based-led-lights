@@ -16,10 +16,10 @@ In my case, the led's take in 5V but the esp32 outputs 3.3V, so I'll use an "IRL
 <img src="https://raw.githubusercontent.com/PR1NT3R/esp32-based-led-lights/refs/heads/main/docs/mosfet-irlz44n-technical.jpg" height="" width="" alt="libraries and boards"></img>
 
 based on the diagram provided above, we need to wire it up like this:
-5V power source > ESP32 5V and led's positive terminal
-MOSFET Gate > 1kΩ resistor > ESP32's pwm pin of your choice
-MOSFET Source > Ground shared with ESP32
-MOSFET Drain > led's negative terminal
+> 5V power source > ESP32 5V and led's positive terminal
+> MOSFET Gate > 1kΩ resistor > ESP32's pwm pin of your choice
+> MOSFET Source > Ground shared with ESP32
+> MOSFET Drain > led's negative terminal
 ## Home Assistant configuration:
 You'll need the "Mosquitto broker" addon, and set up a login in it's configuration, it'll allow the esp32 and HA to communicate together
 I have not figured out the discovery devices so you'll need to paste the HA config from "configuration.demo.h"
